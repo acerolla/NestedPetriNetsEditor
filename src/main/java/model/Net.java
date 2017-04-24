@@ -18,8 +18,8 @@ public class Net {
 
     private List<Node> nodes;
 
-    private int countPlace;
-    private int countTransition;
+    private int placeLastNumber;
+    private int transitionLastNumber;
 
     public Net(String ID) {
         setID(ID);
@@ -27,16 +27,16 @@ public class Net {
 
         nodes = new ArrayList<Node>();
 
-        countPlace = 0;
-        countTransition = 0;
+        placeLastNumber = 0;
+        transitionLastNumber = 0;
     }
 
     //Добавление узла в сеть
     public void addNode(boolean isPlace){
         if (isPlace) {
-            nodes.add(new Place("P" + ++countPlace));
+            nodes.add(new Place("P" + ++placeLastNumber));
         } else {
-            nodes.add(new Transition("T" + ++countTransition));
+            nodes.add(new Transition("T" + ++transitionLastNumber));
         }
     }
 
@@ -95,6 +95,38 @@ public class Net {
         }
 
         return arc;
+    }
+
+    //список переходов в сети
+    public List<Transition> getTransitions() {
+        List<Transition> list = new ArrayList<Transition>();
+        for (Node node : nodes) {
+            if (node.getClass() == Transition.class) {
+                list.add((Transition)node);
+            }
+        }
+
+        return list;
+    }
+
+    //список позиций в сети
+    public List<Place> getPlaces() {
+        List<Place> list = new ArrayList<Place>();
+        for (Node node : nodes) {
+            if (node.getClass() == Place.class) {
+                list.add((Place)node);
+            }
+        }
+
+        return list;
+    }
+
+    public int getPlaceLastNumber() {
+        return placeLastNumber;
+    }
+
+    public int getTransitionLastNumber() {
+        return transitionLastNumber;
     }
 
     public String getID() {
