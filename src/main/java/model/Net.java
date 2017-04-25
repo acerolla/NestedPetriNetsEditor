@@ -3,6 +3,7 @@ package model;
 import com.sun.istack.internal.NotNull;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -31,13 +32,14 @@ public class Net {
         transitionLastNumber = 0;
     }
 
-    //Добавление узла в сеть
-    public void addNode(boolean isPlace){
-        if (isPlace) {
-            nodes.add(new Place("P" + ++placeLastNumber));
-        } else {
-            nodes.add(new Transition("T" + ++transitionLastNumber));
-        }
+    //Добавление позиции в сеть
+    public void addPlace() {
+        nodes.add(new Place("P" + ++placeLastNumber));
+    }
+
+    //Добавление перехода в сеть
+    public void addTransition() {
+        nodes.add(new Transition("T" + ++transitionLastNumber));
     }
 
     //Удаление узла из сети
@@ -118,15 +120,8 @@ public class Net {
             }
         }
 
+
         return list;
-    }
-
-    public int getPlaceLastNumber() {
-        return placeLastNumber;
-    }
-
-    public int getTransitionLastNumber() {
-        return transitionLastNumber;
     }
 
     public String getID() {
