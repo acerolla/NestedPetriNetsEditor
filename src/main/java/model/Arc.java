@@ -1,9 +1,13 @@
 package model;
 
+import util.Formula;
+
 /**
  * Created by Acerolla (Evgeniy Solovev) on 22.04.2017.
  */
 public class Arc {
+
+    private Formula formula;
 
     private Node source;
     private Node target;
@@ -18,6 +22,14 @@ public class Arc {
 
     public Node getTarget() {
         return target;
+    }
+
+    public Formula getFormula() {
+        return formula;
+    }
+
+    public void setFormula(Formula formula) {
+        this.formula = formula;
     }
 
     private void setRelation(Node source, Node target) {

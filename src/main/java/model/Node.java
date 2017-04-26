@@ -20,9 +20,9 @@ public abstract class Node {
     protected String ID;
 
     //список всех входящих в узел дуг
-    private List<Arc> arcsToNode;
+    protected List<Arc> arcsToNode;
     //список всех исходящих из узла дуг
-    private List<Arc> arcsFromNode;
+    protected List<Arc> arcsFromNode;
 
     protected Node(String ID) {
         this.ID = ID;
