@@ -7,13 +7,13 @@ import util.Formula;
  */
 public class Transition extends Node {
 
-    private boolean isSinchronized;
+    private boolean isSynchronized;
     private boolean isAutonomic;
 
     public Transition(String ID) {
         super(ID);
         isAutonomic = true;
-        isSinchronized = false;
+        isSynchronized = false;
     }
 
     //обавление формулы на дугу
@@ -23,8 +23,7 @@ public class Transition extends Node {
         if (arcsToNode.contains(arc)) {
             validateFormulaForIncomingArc(formula);
             arc.setFormula(formula);
-        }
-        if (arcsFromNode.contains(arc)) {
+        } else if (arcsFromNode.contains(arc)) {
             validateFormulaForOutcomingArc(formula);
             arc.setFormula(formula);
         }
@@ -32,17 +31,17 @@ public class Transition extends Node {
 
     //переключение типа Перехода(автономный/синхронизированный)
     public void switchType() {
-        isSinchronized = !isSinchronized;
+        isSynchronized = !isSynchronized;
         isAutonomic = !isAutonomic;
-        if (isSinchronized) {
+        if (isSynchronized) {
             setLabel("Synchronized");
         } else {
             setLabel("Automatic");
         }
     }
 
-    public boolean isSinchronized() {
-        return isSinchronized;
+    public boolean isSynchronized() {
+        return isSynchronized;
     }
 
     public boolean isAutonomic() {
