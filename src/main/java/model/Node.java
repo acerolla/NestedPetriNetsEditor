@@ -2,6 +2,7 @@ package model;
 
 
 import com.sun.istack.internal.NotNull;
+import util.Point;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,9 @@ public abstract class Node {
     //список всех исходящих из узла дуг
     protected List<Arc> arcsFromNode;
 
+    //координаты узла...вообще это понадобится только для GUI
+    private Point location;
+
     protected String label;
 
     protected Node(String ID) {
@@ -31,6 +35,8 @@ public abstract class Node {
 
         arcsToNode = new ArrayList<Arc>();
         arcsFromNode = new ArrayList<Arc>();
+
+        location = new Point();
 
         label = "";
     }
@@ -63,6 +69,14 @@ public abstract class Node {
 
     public void setLabel(String label) {
         this.label = label;
+    }
+
+    public Point getLocation() {
+        return location;
+    }
+
+    public void setLocation(Point location) {
+        this.location = location;
     }
 
     public String toString() {
