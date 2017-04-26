@@ -24,11 +24,15 @@ public abstract class Node {
     //список всех исходящих из узла дуг
     protected List<Arc> arcsFromNode;
 
+    protected String label;
+
     protected Node(String ID) {
         this.ID = ID;
 
         arcsToNode = new ArrayList<Arc>();
         arcsFromNode = new ArrayList<Arc>();
+
+        label = "";
     }
 
     public String getID() {
@@ -53,8 +57,15 @@ public abstract class Node {
         arcsToNode.add(arc);
     }
 
+    public String getLabel() {
+        return label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
+    }
 
     public String toString() {
-        return getID();
+        return ID + " (" + getLabel() + ")";
     }
 }
